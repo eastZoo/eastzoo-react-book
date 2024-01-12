@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "@/styles/theme";
 import { GlobalStyle } from "@/styles/globals-style";
 import Head from "./head";
-import AuthGuard from "./AuthGuard";
+import AuthGuard from "./authGuard";
 
 export default function RootLayout({
   children,
