@@ -1,7 +1,7 @@
 import { atom, selector } from "recoil";
 import { v1 } from "uuid";
 
-export const accessTokenState = atom({
+export const accessTokenState = atom<string | null>({
   key: `accessToken/${v1()}`,
   default: null,
 });
