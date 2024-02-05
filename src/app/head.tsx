@@ -9,8 +9,6 @@ export default function Head() {
       <meta name="description" content="Project name" />
       <meta name="veiwport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="/favicon.ico" />
-      <link rel="manifest" href="/site.webmanifest" />
-      <link rel="manifest" href="/manifest.json" />
       <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet"
