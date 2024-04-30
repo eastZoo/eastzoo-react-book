@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
+// 쿼리 페칭 에러시 나타나는 페이지
 export const Fallback: React.FC = () => {
   return (
     <div className="flex justify-center items-center p-4">
