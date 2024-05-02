@@ -39,6 +39,7 @@ export const MainTemplate = ({
       <S.MainTemplate stateTheme={operStat} loading={loading}>
         <Header isOpen={isOpen} toggleDropdown={toggleDropdown} items={items} />
         <S.MainContentSection>
+          {/* 로딩 컴포넌트 */}
           {loading === true && <LoadingSpinner />}
           {children}
         </S.MainContentSection>
