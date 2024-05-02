@@ -2,16 +2,13 @@ import { Button } from "@/components/atoms/Button";
 import { MainTemplate } from "@/components/templates/MainTemplate";
 import React from "react";
 
-const index = () => {
+const ButtonPage = () => {
   return (
-    <MainTemplate>
-      <div>
-        <div>button Components</div>
-        <div></div>
-        <Button type="button" color="primary" size="lg" label="저장" />
-      </div>
-    </MainTemplate>
+    <div>
+      <div>button Components</div>
+      <Button type="button" color="primary" size="lg" label="저장" />
+    </div>
   );
 };
 
-export default index;
+export default ButtonPage;

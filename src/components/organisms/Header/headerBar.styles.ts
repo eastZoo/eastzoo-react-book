@@ -1,51 +1,39 @@
-"use client";
 import styled from "styled-components";
 
-export const Header = styled.header`
-  display: grid;
-  height: 48px;
-  padding: 4px;
-  background: ${(props) => props.theme.colors.white};
-  grid-template-columns: 50% 50%;
+export const Header = styled.div`
+  display: flex;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+`;
 
-  .navbar {
-    height: 44px;
-    background: none;
+export const HeaderBox = styled.div`
+  display: flex;
+  width: 70%;
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  justify-content: space-between;
+`;
 
-    .navbar-bg {
-      background: none;
-
-      &::after {
-        background: none;
-      }
-    }
-
-    .navbar-inner {
-      padding: 0 !important;
-
-      .left {
-        display: flex;
-        margin: 0 !important;
-        color: ${(props) => props.theme.colors.headerNavbar};
-        font-size: 1.6rem;
-        font-weight: 400;
-        align-items: center;
-        gap: 4px;
-
-        div {
-          padding-left: 12px;
-        }
-      }
+export const LinkGroup = styled.div`
+  display: flex;
+  gap: 10px;
+  width: 50%;
+  font-size: 13px;
+  align-items: center;
+  justify-content: flex-end;
+  a {
+    &:hover {
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 `;
 
-export const HeaderFunctionList = styled.ul`
+export const functionGroup = styled.div`
   display: flex;
+  gap: 15px;
   align-items: center;
-  justify-content: flex-end;
-`;
-
-export const HeaderFunctionItems = styled.li`
-  height: 40px;
+  margin-left: auto;
 `;

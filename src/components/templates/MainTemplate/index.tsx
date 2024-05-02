@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { MenuList } from "../../../data/menuList";
 import { LoadingSpinner } from "../../atoms/LoadingSpinner";
 import { Header } from "../../organisms/Header";
@@ -19,49 +20,31 @@ export const MainTemplate = ({
   pageTit,
   loading,
 }: LayoutProps) => {
-  // const menuRef = useRef<HTMLDivElement>(null);
-  // const [menuOpen, setMenuOpen] = useState(false);
-
-  // const handleMenuOpen = (menuOpen: boolean) => {
-  //   setMenuOpen(menuOpen);
-  // };
-
-  // const menuOutsideClick = (e: any) => {
-  //   if (menuRef.current === e.target) {
-  //     setMenuOpen(false);
-  //   }
-  // };
-  const router = useRouter();
-
-  const handleClick = () => {
-    console.log("sda");
-    router.back();
+  // 헤더
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => {
+    setIsOpen((prevState) => !prevState);
   };
+  const items = [
+    {
+      componentName: "Button",
+      link: "/button",
+    },
+    { componentName: "Input", link: "/input" },
+    { componentName: "Select", link: "/select" },
+  ];
 
   return (
     <>
       <S.MainTemplate stateTheme={operStat} loading={loading}>
-        <Header
-          backBtnProps={{
-            color: "white",
-            label: "<",
-            size: "xsm",
-            onClick: () => handleClick(),
-          }}
-          // pageTit={
-          //   MenuData.filter((cur) => cur.url === f7route.path)[0]
-          //     ? MenuData.filter((cur) => cur.url === f7route.path)[0].menuName
-          //     : ""
-          // }
-          // handleMenuOpen={handleMenuOpen}
-          // menuOpen={menuOpen}
-        />
+        <Header isOpen={isOpen} toggleDropdown={toggleDropdown} items={items} />
         <S.MainContentSection>
           {loading === true && <LoadingSpinner />}
           {children}
         </S.MainContentSection>
       </S.MainTemplate>
-      {/* <Menu
+      {/* 사이드메뉴
+      <Menu
         menuRef={menuRef}
         menuOpen={menuOpen}
         menuOutsideClick={menuOutsideClick}

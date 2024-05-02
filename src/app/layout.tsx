@@ -15,6 +15,7 @@ import ErrorBoundary from "@/error/errorBoundary";
 import { queryCacheOnError } from "@/error/errorState";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { MainTemplate } from "@/components/templates/MainTemplate";
 
 export default function RootLayout({
   children,
@@ -48,7 +49,10 @@ export default function RootLayout({
                   <StyledComponentsRegistry>
                     <>
                       <GlobalStyle />
-                      {children}
+                      {/* 메인 템플릿 ( 헤더 / 사이드바 ) */}
+                      <MainTemplate>
+                        <>{children}</>
+                      </MainTemplate>
                     </>
                   </StyledComponentsRegistry>
                 </QueryClientProvider>

@@ -1,36 +1,34 @@
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import * as S from "./headerBar.styles";
-import { Button } from "@/components/atoms/Button";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { DropdownMenu } from "@/components/molcules/DropdownMenu";
 
-interface LayoutProps {
-  pageTit?: string;
-  backBtnProps?: {
-    color?: string;
-    label?: string;
-    size?: any;
-    onClick?: Function;
-  };
-}
-
-export const Header = ({ pageTit, backBtnProps }: LayoutProps) => {
-  const pathName = usePathname();
-
-  console.log(pathName);
+export const Header = ({ items, toggleDropdown, isOpen, isLogin }: any) => {
   return (
-    <>
-      <S.Header>
-        {backBtnProps && (
-          <Button
-            size={backBtnProps.size}
-            label={backBtnProps.label}
-            color={backBtnProps.color}
-            onClick={backBtnProps?.onClick && backBtnProps?.onClick}
-          ></Button>
-        )}
-      </S.Header>
-    </>
+    <S.Header>
+      <S.HeaderBox>
+        <Link href="/">
+          <Image
+            src="/assets/img/logo-main.png"
+            alt="components"
+            width="200"
+            height={60}
+          />
+        </Link>
+        {/* <InputSearchBar
+            placeholder="키워드를 입력해주세요."
+            src="/assets/svg/search.svg"
+            alt="검색"
+          /> */}
+        <S.LinkGroup>
+          <div onClick={toggleDropdown}>
+            <Link href="/">컴포넌트</Link>
+            {isOpen && <DropdownMenu />}
+          </div>
+          <Link href="/">시작 가이드</Link>
+          <Link href="/">제작자</Link>
+        </S.LinkGroup>
+      </S.HeaderBox>
+    </S.Header>
   );
 };

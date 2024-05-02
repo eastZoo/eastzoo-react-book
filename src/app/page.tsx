@@ -24,10 +24,7 @@ export default function Home() {
   // );
   return (
     <main>
-      <div>
-        <div>Input</div>
-        <Link href={"/button"}>Button</Link>
-      </div>
+      <div>메인 페이지입니다.</div>
     </main>
   );
 }
