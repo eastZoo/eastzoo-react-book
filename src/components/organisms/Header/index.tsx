@@ -11,8 +11,8 @@ export const Header = ({ items, toggleDropdown, isOpen, isLogin }: any) => {
           <Image
             src="/assets/img/logo-main.png"
             alt="components"
-            width="200"
-            height={60}
+            width="280"
+            height={90}
           />
         </Link>
         {/* <InputSearchBar
@@ -23,7 +23,7 @@ export const Header = ({ items, toggleDropdown, isOpen, isLogin }: any) => {
         <S.LinkGroup>
           <div onClick={toggleDropdown}>
             <Link href="/">컴포넌트</Link>
-            {isOpen && <DropdownMenu />}
+            {isOpen && <DropdownMenu items={items} />}
           </div>
           <Link href="/">시작 가이드</Link>
           <Link href="/">제작자</Link>

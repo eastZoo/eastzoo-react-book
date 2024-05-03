@@ -1,50 +1,60 @@
-import { useRecoilValue } from "recoil";
+"use client";
 import { Input, InputProps } from "..";
-import { keyboardInputMode } from "../../../../state/keyboard";
 import * as S from "../input.styles";
 
+/**
+ *
+ * @param disabled bool
+ * @param size string(사용자 커스텀 사이즈)
+ * @param label string(라벨 텍스트)
+ * @param necessary bool(필수 입력값 red start표시유무)
+ * @param invisible bool(라벨 제외 인풋태그 표시유무)
+ * @param autoComplete string( "on"/"off"[default] ) 자동완성태그
+ * @param inputMode string (none|text|decimal|numeric|tel|search|email|url)
+ * @param type string (text|password|email|number|checkbox|radio)
+ * @param name string 이름정의
+ * @param refs
+ * @param register register (react-hook-form)
+ * @param onChange Func
+ * @returns
+ */
 export const InputText = ({
-  autoComplete = "off",
   disabled,
-  invisible,
   size,
-  children,
   label,
-  placeholder,
-  value,
+  necessary,
+  invisible,
+  autoComplete = "off",
+  inputMode,
+  type = "text",
+  name,
+  refs,
   register,
   onChange = () => {},
+
+  children,
+  placeholder,
+  value,
   onFocus = () => {},
   onBlur = () => {},
   maxLength,
-  name,
-  type = "text",
   errors,
   step,
-  necessary,
-  refs,
-  inputMode,
   onKeyDown,
 }: InputProps) => {
-  const inputModeRecoil = useRecoilValue(keyboardInputMode);
   return (
-    <Input
-      disabled={disabled}
-      size={size}
-      label={label}
-      // style={{ visibility: invisible ? "hidden" : "visible" }}
-    >
+    <Input disabled={disabled} size={size} label={label}>
       <>
         {label && (
           <S.InputLabelBox>
-            {label && label} {necessary && <span className="necessary">*</span>}
+            {necessary && <span className="necessary">*</span>} {label && label}
           </S.InputLabelBox>
         )}
         <S.InputTypeBox style={{ border: invisible ? "none" : "" }}>
           <input
             autoComplete={autoComplete}
-            spellCheck={false}
-            inputMode={inputMode ? inputMode : inputModeRecoil}
+            spellCheck={false} // 맞춤법 검사 유무
+            inputMode={inputMode ? inputMode : "text"}
             style={{
               color: invisible ? "transparent" : "",
               outline: invisible ? "none" : "",
@@ -52,7 +62,6 @@ export const InputText = ({
             type={type}
             name={name}
             ref={refs}
-            {...register}
             onChange={(e) => {
               register?.onChange(e);
               onChange(e);
@@ -69,6 +78,7 @@ export const InputText = ({
             placeholder={placeholder}
             step={step}
             maxLength={maxLength}
+            {...register}
           />
         </S.InputTypeBox>
         {errors ? <p className="err-message">{errors[name!]?.message}</p> : ""}

@@ -1,6 +1,4 @@
 "use client";
-
-import { DropdownProps } from "react-bootstrap";
 import styled, { css } from "styled-components";
 
 export const DropdownMenu = styled.div`
@@ -31,6 +29,7 @@ export const DropdownList = styled.ul`
 export const DropdownItem = styled.li`
   display: block;
   z-index: 1;
+  margin-bottom: 5px;
 `;
 
 export const ItemGroup = styled.div`
@@ -44,10 +43,6 @@ export const ItemContent = styled.div`
   }
 `;
 
-export const DropdownCategory = styled.div<DropdownProps>`
-  margin: 10px;
-`;
-
 export const DropdownButton = styled.div`
   display: flex;
   border: 1px solid ${(props) => props.theme.colors.gray};
@@ -58,7 +53,7 @@ export const DropdownButton = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  span{
+  span {
     margin-left: 5px;
   }
   p {

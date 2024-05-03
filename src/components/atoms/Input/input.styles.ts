@@ -1,3 +1,4 @@
+"use client";
 import styled, { css } from "styled-components";
 import { InputProps } from ".";
 
@@ -75,33 +76,6 @@ export const InputTypeBox = styled.div`
     top: 4px;
     right: 10px;
   }
-
-  // 모바일 환경(640px 이하) 설정
-  // @media (max-width: 640px) {
-  //   .icon-arrow-select {
-  //     position: relative;
-  //     height: 18px;
-  //     top: 2px;
-  //     right: 6px;
-  //   }
-
-  //   input[type="text"],
-  //   input[type="tel"],
-  //   input[type="number"],
-  //   input[type="password"] {
-  //     padding: 0 8px;
-  //     font-size: 1.2rem;
-  //   }
-
-  //   select {
-  //     padding: 0 8px;
-  //     font-size: 1.2rem;
-  //   }
-
-  //   textarea {
-  //     font-size: 1.2rem;
-  //   }
-  // }
 `;
 
 export const InputBox = styled.div<InputProps>`
@@ -117,18 +91,7 @@ export const InputBox = styled.div<InputProps>`
       : "40px"};
   color: ${(props) => props.theme.colors.labelTxt};
   font-size: 1.4rem;
-  grid-template-columns: ${(props) =>
-    props.type === "radio"
-      ? "1fr"
-      : props.type === "textarea"
-      ? "1fr"
-      : props.size === "lg"
-      ? "90px 1fr"
-      : props.label
-      ? "100px 1fr"
-      : "100%"};
   gap: 5px;
-
   ${(props) =>
     props.disabled === true &&
     css`

@@ -9,7 +9,7 @@ interface MainTemplateProps {
 export const MainTemplate = styled.div<MainTemplateProps>`
   overflow: auto;
   display: grid;
-  width: 90vw;
+  width: 100vw;
   height: 100vh;
   background: ${(props) => props.theme.colors.white};
   grid-template-rows: 48px calc(100vh - 48px);
