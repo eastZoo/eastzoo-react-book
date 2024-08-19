@@ -1,4 +1,4 @@
-import { accessTokenState } from "@/recoil/authToken";
+import { accessTokenState } from "@/states/authToken";
 import React, { Suspense, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 

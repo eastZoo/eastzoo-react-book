@@ -2,132 +2,66 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    gradient: {
-      border: string;
-      skeleton: string;
-      gradientGauge: string;
-    };
-    shadow: {
-      primary: string;
-      headerPopup: string;
-      mainMenu: string;
-
-      card: string;
-
-      toggleDot: string;
-      tile: string;
-      floatingBtn: string;
-      statusBtn: string;
-
-      formTemplate: string;
+    shadows: {
+      popup: string;
       modal: string;
-      btn: string;
-      navigation: string;
+      field: string;
+      item: string;
+      card: string;
     };
+
     colors: {
-      // COLOR
-      white: string;
-      whiteActive: string;
-      black: string;
+      // Colors
+      primary100: string;
+      primary60: string;
+      primary50: string;
+      primary10: string;
+      primary6: string;
+      primary5: string;
+      primaryHover: string;
+      secondary100: string;
 
-      // THEME
-      [primaryBright: string]: string;
-      [primary: string]: string;
-      [primaryHover: string]: string;
-      [primaryActive: string]: string;
-      [secondaryBright: strgin]: string;
-      [secondary: string]: string;
-      [secondaryHover: string]: string;
-      [secondaryActive: string]: string;
-      [accentBright: string]: string;
-      [accent: string]: string;
-      [accentHover: string]: string;
-      [accentActive: string]: string;
-      [tertiaryBright: string]: string;
-      [tertiary: string]: string;
-      [tertiaryHover: string]: string;
-      [tertiaryActive: string]: string;
+      // Basic
+      white100: string;
+      white80: string;
+      white60: string;
+      white38: string;
+      white12: string;
+      black100: string;
+      black90: string;
+      black80: string;
+      black70: string;
+      black60: string;
+      black38: string;
+      black30: string;
+      black12: string;
+      black10: string;
+      black8: string;
+      black5: string;
+      black4: string;
+      black2: string;
+      gray100: string;
 
-      // MAIN MENU
-      [icon: string]: string;
-      [iconActive: string]: string;
-      headerNavbar: string;
+      // Status
+      [greenStatus: string]: string;
+      [greenStatus8: string]: string;
+      greenStatusHover: string;
+      [yellowStatus: string]: string;
+      [redStatus: string]: string;
+      [redStatus5: string]: string;
+      [redStatus8: string]: string;
+      redStatusHover: string;
+      [blueStatus: string]: string;
+      [grayStatus: string]: string;
 
-      // old
-      [highlight: string]: string;
-      [highlightActive: string]: string;
-      function: string;
-      [functionActive: string]: string;
-
-      [stop: string]: string;
-      [stopActive: string]: string;
-
-      [cancel: string]: string;
-      [cancelActive: string]: string;
-      [terms: string]: string;
-      [termsActive: string]: string;
-      disabled: string;
-
-      arrow: string;
-
-      // TEXT
-      labelTxt: string;
-      subTxt: string;
-
-      // BORDER
-      border: string;
-      linkBtnBorder: string;
-      divideBorder: string;
-      itemExpborder: string;
-      dashedBorder: string;
-      searchBlockBorder: string;
-
-      // BACKGROUND
-      mainBg: string;
-      menuBg: string;
-      searchBlockBg: string;
-
-      //old
-      tooltipBg: string;
-      tooltipBgW: string;
-      stopBg: string;
-      startBg: string;
-
-      listCheckedBg: string;
-      shadeBg: string;
-      skeleton: string;
-      avatarBox: string;
-      formBg: string;
-
-      // LAYOUT
-      startStatusTxt: string;
-      startStatusReady: string;
-      startStatusBg: string;
-      startBtnBg: string;
-      contiStatusTxt: string;
-      contiStatusReady: string;
-      contiStatusBg: string;
-      contiBtnBg: string;
-      doneBtnBg: string;
-      pauseStatusTxt: string;
-      pauseStatusReady: string;
-      pauseStatusBg: string;
-      pauseBtnBg: string;
-      prev: string;
-      between: string;
-      end: string;
-      diabledBg: string;
-
-      // INPUT
-      labelTxt: string;
-      inputBorder: string;
-      inputBg: string;
-      inputDisabledBg: string;
-
-      //GRID
-      grid: string;
-      gridReady: string;
-      gridInnerBorder: string;
+      // Component
+      flowLabelBox: string;
+      labelBox: string;
+      scrollTrack: string;
+      authBackground: string;
+      shipMonitorBackgroud: string;
+      shipMonitorShade: string;
+      shipMonitorBorder: string;
     };
   }
 }
