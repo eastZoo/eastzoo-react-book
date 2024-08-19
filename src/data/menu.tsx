@@ -43,176 +43,12 @@ export const MenuPermissions = [
 export const menuList = [
   {
     id: 1,
-    title: "함정 정보",
-    icon: <IconMenu01 />,
-    depth: 1,
-    submenu: [
-      { id: 1, title: MenuNames.SHIP_INFO, depth: 2, path: "/ship-info/list" },
-      {
-        id: 2,
-        title: MenuNames.SHIP_OPERATION_STATUS,
-        depth: 2,
-        path: "/ship-info/operation-status",
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: MenuNames.EQUIPMENT_MONITORING,
-    icon: <IconMenu02 />,
-    depth: 1,
-    submenu: [
-      {
-        id: 1,
-        title: MenuNames.EQUIPMENT_ALL,
-        depth: 2,
-        path: "/equipment/all",
-      },
-      { id: 2, title: "가스터빈", depth: 2, path: "/equipment/gas-turbine/0" },
-      {
-        id: 3,
-        title: MenuNames.GENERATOR_01,
-        depth: 2,
-        path: "/equipment/generator01/0",
-      },
-      {
-        id: 4,
-        title: MenuNames.GENERATOR_02,
-        depth: 2,
-        path: "/equipment/generator02/0",
-      },
-      {
-        id: 5,
-        title: MenuNames.GENERATOR_03,
-        depth: 2,
-        path: "/equipment/generator03/0",
-      },
-      {
-        id: 6,
-        title: MenuNames.GENERATOR_04,
-        depth: 2,
-        path: "/equipment/generator04/0",
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: MenuNames.DATA_ANALYSIS,
-    icon: <IconMenu03 />,
-    depth: 1,
-    submenu: [
-      {
-        id: 1,
-        title: MenuNames.TREND_ANALYSIS,
-        depth: 2,
-        submenu: [
-          {
-            id: 1,
-            title: MenuNames.SAME_TIME_CHARTS,
-            depth: 3,
-            path: "/analysis/trend/charts",
-          },
-          {
-            id: 2,
-            title: MenuNames.SIMILAR_CASE_ANALYSIS,
-            depth: 3,
-            path: "/analysis/trend/similar-case",
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: MenuNames.DATA_MANAGEMENT,
-        depth: 2,
-        submenu: [
-          {
-            id: 1,
-            title: MenuNames.DATA_FILE_VIEW,
-            depth: 3,
-            path: "/analysis/data/file",
-          },
-          {
-            id: 2,
-            title: MenuNames.SENSOR_DATA_VIEW,
-            depth: 3,
-            path: "/analysis/data/sensor",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: MenuNames.MAINTENANCE_SUPPORT,
-    icon: <IconMenu05 />,
-    depth: 1,
-    submenu: [
-      {
-        id: 1,
-        title: MenuNames.ALARM_MANAGEMENT,
-        depth: 2,
-        submenu: [
-          {
-            id: 1,
-            title: MenuNames.STATUS_DIAGNOSIS_ALARM,
-            depth: 3,
-            path: "/support/alarm/status",
-          },
-          {
-            id: 2,
-            title: MenuNames.ECS_ALARM,
-            depth: 3,
-            path: "/support/alarm/ecs",
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: MenuNames.REPORT_MANAGEMENT,
-        depth: 2,
-        path: "/support/report",
-      },
-      {
-        id: 3,
-        title: MenuNames.TECH_DOC_MANAGEMENT,
-        depth: 2,
-        path: "/support/tech-doc",
-      },
-    ],
-  },
-  {
-    id: 5,
     title: MenuNames.ADMIN_SETTINGS,
     icon: <IconMenu06 />,
     depth: 1,
     submenu: [
       {
         id: 1,
-        title: MenuNames.SHIP_MANAGEMENT,
-        depth: 2,
-        submenu: [
-          {
-            id: 1,
-            title: MenuNames.SHIP_INFO_MANAGEMENT,
-            depth: 3,
-            path: "/setting/ship/ship-info",
-          },
-          {
-            id: 2,
-            title: MenuNames.EQUIPMENT_INFO_MANAGEMENT,
-            depth: 3,
-            path: "/setting/ship/equipment-info",
-          },
-          {
-            id: 3,
-            title: MenuNames.EQUIPMENT_CODE_MANAGEMENT,
-            depth: 3,
-            path: "/setting/ship/equipment-code",
-          },
-        ],
-      },
-      {
-        id: 2,
         title: MenuNames.USER_MANAGEMENT,
         depth: 2,
         submenu: [
@@ -226,7 +62,7 @@ export const menuList = [
             id: 2,
             title: MenuNames.AUTH_MANAGEMENT,
             depth: 3,
-            path: "/setting/user/auth",
+            path: "/setting/user/permission",
           },
           {
             id: 3,
