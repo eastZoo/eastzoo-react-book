@@ -24,10 +24,16 @@ const schema = yup
 
 export const LoginPage = () => {
   const { control, handleSubmit } = useForm<LoginInputs>({
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: LoginInputs) => {};
+  const onSubmit = async (data: LoginInputs) => {
+    localStorage.setItem(
+      "naval-ship-condition-land-access-token",
+      "tempAccessToken"
+    );
+    window.location.replace("/");
+  };
 
   return (
     <AuthTemplate>

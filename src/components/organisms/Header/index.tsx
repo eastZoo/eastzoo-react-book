@@ -6,12 +6,6 @@ import { useLogout } from "../../../common/hooks/useLogout";
 import { ReactComponent as IconMenu } from "../../../styles/assets/svg/icon_sidemenu.svg";
 import { ReactComponent as IconUser } from "../../../styles/assets/svg/icon_user.svg";
 import { ReactComponent as IconAlarm } from "../../../styles/assets/svg/icon_alarm.svg";
-import { useRecoilValue } from "recoil";
-import { currentShipState } from "../../../common/states/ship";
-import { request } from "../../../common/api";
-import dayjs from "dayjs";
-import { useQuery } from "@tanstack/react-query";
-
 interface HeaderProps {
   asideToggle?: any;
   asideOpen?: boolean;
