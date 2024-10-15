@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import { Link, useLocation, useMatch } from "react-router-dom";
+import { ReactComponent as IconArrow } from "../../../styles/assets/svg/icon_sidemenu_arrow.svg";
+import { SidemenuList } from "../../molecules/SidemenuList";
 import * as S from "./SidemenuItem.style";
-import { SidemenuList } from "@/components/molcules/SidemenuList";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import SideMenuArrowIcon from "public/assets/svg/icon_sidemenu_arrow.svg";
+
 interface SidemenuItemProps {
   data: any;
   onContextMenu: (event: React.MouseEvent, target: any) => void;
 }
 
 export const SidemenuItem = ({ data, onContextMenu }: SidemenuItemProps) => {
-  const pathname: any = usePathname();
-
+  const location = useLocation();
   const [submenu, setSubmenu] = useState(false);
   const [initialized, setInitialized] = useState(false);
-  const isMatch = pathname === data?.path;
+  const isMatch = useMatch({ path: data?.path ?? "", end: true });
 
   useEffect(() => {
     if (!initialized) {
@@ -31,14 +29,15 @@ export const SidemenuItem = ({ data, onContextMenu }: SidemenuItemProps) => {
         }
         return false;
       };
-
-      if (openMenu(data, pathname)) {
+      console.log("!!",data, location.pathname);
+      if (openMenu(data, location.pathname)) {
         setSubmenu(true);
       }
 
       setInitialized(true);
     }
-  }, [pathname, data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname, data]);
 
   const submenuToggle = () => {
     setSubmenu(!submenu);
@@ -61,14 +60,7 @@ export const SidemenuItem = ({ data, onContextMenu }: SidemenuItemProps) => {
               {data.depth !== 1 && "- "}
               <S.TitBox>{data.title}</S.TitBox>
             </S.SidemenuItemTit>
-            {data.submenu && (
-              <Image
-                src={SideMenuArrowIcon}
-                alt="Arrow Icon"
-                width={10}
-                height={10}
-              />
-            )}
+            {data.submenu && <IconArrow />}
           </S.SidemenuListItem>
           <SidemenuList
             depth={data.depth + 1}
@@ -77,21 +69,14 @@ export const SidemenuItem = ({ data, onContextMenu }: SidemenuItemProps) => {
           />
         </>
       ) : (
-        <Link href={data.path}>
+        <Link to={`${data.path}`}>
           <S.SidemenuListItem $depth={data.depth}>
             <S.SidemenuItemTit>
               {data.depth === 1 && data.icon}
               {data.depth !== 1 && "- "}
               <S.TitBox>{data.title}</S.TitBox>
             </S.SidemenuItemTit>
-            {data.submenu && (
-              <Image
-                src={SideMenuArrowIcon}
-                alt="Arrow Icon"
-                width={10}
-                height={10}
-              />
-            )}
+            {data.submenu && <IconArrow />}
           </S.SidemenuListItem>
         </Link>
       )}

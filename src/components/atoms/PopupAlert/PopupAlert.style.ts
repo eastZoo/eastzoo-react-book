@@ -4,7 +4,7 @@ export const PopupAlertBox = styled.div`
   position: fixed;
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   left: 0;
   top: 0;
   background: rgba(0, 0, 0, 0.6);

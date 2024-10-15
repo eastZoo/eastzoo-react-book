@@ -1,5 +1,5 @@
-import { SidemenuListBox } from "@/components/molcules/SidemenuList/SidemenuList.style";
 import styled, { css } from "styled-components";
+import { SidemenuListBox } from "../../molecules/SidemenuList/SidemenuList.style";
 
 interface SidemenuItemProps {
   $depth?: number;
@@ -94,7 +94,7 @@ export const SidemenuItemBox = styled.li<SidemenuItemProps>`
       }
 
       & > ${SidemenuListBox} {
-        max-height: 100vh;
+        max-height: 100svh;
         transition: max-height 0.4s ease-in-out;
       }
     `}
@@ -129,7 +129,7 @@ export const SidemenuItemBox = styled.li<SidemenuItemProps>`
         }
 
         & > ${SidemenuListBox} {
-          max-height: 100vh;
+          max-height: 100svh;
           transition: max-height 0.4s ease-in-out;
         }
       }

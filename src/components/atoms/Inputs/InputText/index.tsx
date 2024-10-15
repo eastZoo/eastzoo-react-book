@@ -2,8 +2,10 @@ import { ChangeEvent } from "react";
 import { InputProps, Inputs } from "../Inputs";
 
 interface InputTextProps extends InputProps {
-  defaultValue?: string;
+  defaultValue?: string | number;
+  step?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputText = ({
@@ -17,8 +19,11 @@ export const InputText = ({
   name,
   disabled,
   onChange,
+  onBlur,
   defaultValue,
   register,
+  step,
+  value,
 }: InputTextProps) => {
   return (
     <Inputs
@@ -35,7 +40,10 @@ export const InputText = ({
         type={type}
         disabled={disabled}
         onChange={onChange}
+        onBlur={onBlur}
+        value={value}
         defaultValue={defaultValue}
+        step={step}
         {...register}
       />
     </Inputs>

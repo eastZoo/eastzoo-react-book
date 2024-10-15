@@ -21,6 +21,7 @@ export const InputDate = ({
   onChange,
   defaultValue,
   register,
+  disabled,
 }: InputDateProps) => {
   return (
     <Inputs
@@ -37,6 +38,7 @@ export const InputDate = ({
         type="date"
         onChange={onChange}
         defaultValue={defaultValue}
+        disabled={disabled}
         {...register}
       />
     </Inputs>

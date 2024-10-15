@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import { ApiError } from "./types/apiError";
 import {
   logout,
   readAccessToken,
@@ -7,7 +8,6 @@ import {
   writeRefreshToken,
 } from "./functions/authFunctions";
 import { showAlert } from "../components/containers/Alert";
-import { ApiError } from "@/types/apiError";
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_HOST,

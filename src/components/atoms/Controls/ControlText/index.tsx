@@ -6,12 +6,14 @@ interface ControlTextProps extends InputProps {
   control: Control<any>;
   defaultValue?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  step?: string;
 }
 
 export const ControlText = ({
   type = "text",
   size = "md",
   direction = "column",
+  step,
   id,
   label,
   placeholder,
@@ -36,14 +38,26 @@ export const ControlText = ({
           errored={!!formState.errors[name]}
           erroredTxt={formState.errors[name]?.message}
         >
-          <input
-            id={id}
-            placeholder={placeholder}
-            type={type}
-            onChange={field.onChange}
-            value={field.value}
-            disabled={disabled}
-          />
+          {type === "number" ? (
+            <input
+              id={id}
+              placeholder={placeholder}
+              type={type}
+              step={step}
+              onChange={field.onChange}
+              value={field.value}
+              disabled={disabled}
+            />
+          ) : (
+            <input
+              id={id}
+              placeholder={placeholder}
+              type={type}
+              onChange={field.onChange}
+              value={field.value}
+              disabled={disabled}
+            />
+          )}
         </Inputs>
       )}
     />

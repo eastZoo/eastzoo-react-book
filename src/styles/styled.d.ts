@@ -15,6 +15,7 @@ declare module "styled-components" {
       primary100: string;
       primary60: string;
       primary50: string;
+      primary38: string;
       primary10: string;
       primary6: string;
       primary5: string;

@@ -1,11 +1,11 @@
 import * as yup from "yup";
+import { ModalPassword } from "../../molecules/Modals/ModalPassword";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import { request } from "../../../common/api";
+import { BaseResponse } from "../../../common/types/baseRespones";
 import { showAlert } from "../Alert";
-import { BaseResponse } from "@/types/baseRespones";
-import { ModalPassword } from "@/components/molcules/Modals/ModalPassword";
 
 export interface ChangePasswordInputs {
   currentPassword: string;

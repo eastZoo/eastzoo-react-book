@@ -1,10 +1,9 @@
 import * as S from "./Sidemenu.style";
-
+import { menuList } from "../../../data/menu";
+import { MenuItem } from "../../../common/types/menu";
+import { Permission } from "../../../common/types/permission";
 import { SidemenuTop } from "../../atoms/SidemenuTop";
-import { menuList } from "@/data/menu";
-import { MenuItem } from "@/types/menu";
-import { Permission } from "@/types/permission";
-import { SidemenuList } from "@/components/molcules/SidemenuList";
+import { SidemenuList } from "../../molecules/SidemenuList";
 
 interface SidemenuProps {
   asideToggle?: any;
@@ -12,38 +11,12 @@ interface SidemenuProps {
   onContextMenu: (event: React.MouseEvent, target: any) => void;
 }
 
-export const Sidemenu = ({
-  asideToggle,
-  permissions,
-  onContextMenu,
-}: SidemenuProps) => {
-  const filterMenuByPermission = (
-    menuList: any[],
-    permissions: Permission[]
-  ): MenuItem[] => {
-    // const hasPermission = (title: string) => {
-    //   const permission = permissions.find((p) => p.pmsMenuName === title);
-    //   return permission ? permission.pmsMenuActive === 1 : 0;
-    // };
-
-    // const filterSubmenu = (submenu: MenuItem[]): MenuItem[] => {
-    //   return submenu
-    //     .map((item) => ({
-    //       ...item,
-    //       submenu: item.submenu ? filterSubmenu(item.submenu) : undefined,
-    //     }))
-    //     .filter((item) => hasPermission(item.title));
-    // };
-
-    // return filterSubmenu(menuList);
-    return menuList;
-  };
-
+export const Sidemenu = ({ asideToggle, onContextMenu }: SidemenuProps) => {
   return (
     <S.SidemenuSection>
       <SidemenuTop asideToggle={asideToggle} />
       <SidemenuList
-        menuList={filterMenuByPermission(menuList, permissions)}
+        menuList={menuList as MenuItem[]}
         onContextMenu={onContextMenu}
       />
     </S.SidemenuSection>

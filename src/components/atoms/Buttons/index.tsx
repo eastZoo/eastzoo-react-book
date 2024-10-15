@@ -14,7 +14,10 @@ interface ButtonsProps {
     | "icon"
     | "find"
     | "cancelModal"
-    | "outline";
+    | "outline"
+    | "selectCondition"
+    | "selectCondition active"
+    | "disabled";
   label?: string;
   form?: string;
   onClick?: any;

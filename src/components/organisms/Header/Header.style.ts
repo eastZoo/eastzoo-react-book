@@ -1,7 +1,3 @@
-import {
-  LegendBox,
-  TitBorder,
-} from "@/components/molcules/Legends/Legends.style";
 import styled from "styled-components";
 
 export const HeaderSection = styled.header`
@@ -91,38 +87,20 @@ export const HeaderBtnBox = styled.div`
   display: flex;
   gap: 4px;
 
-  ${LegendBox} {
-    margin-right: 10px;
+  svg {
+    path {
+      fill: ${(props) => props.theme.colors.white100};
+      fill-opacity: 1;
+    }
   }
 
-  // 화면크기(1400px 미만) 설정
-  @media (max-width: 1399px) {
-    ${LegendBox} {
-      div,
-      ul {
-        color: ${(props) => props.theme.colors.white100};
-      }
+  button {
+    &:hover {
+      background: ${(props) => props.theme.colors.black38};
 
-      ${TitBorder} {
-        background: ${(props) => props.theme.colors.white38};
-      }
-    }
-
-    svg {
-      path {
-        fill: ${(props) => props.theme.colors.white100};
-        fill-opacity: 1;
-      }
-    }
-
-    button {
-      &:hover {
-        background: ${(props) => props.theme.colors.black38};
-
-        svg {
-          path {
-            fill: ${(props) => props.theme.colors.white100};
-          }
+      svg {
+        path {
+          fill: ${(props) => props.theme.colors.white100};
         }
       }
     }

@@ -12,12 +12,15 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: -0.01rem;
   }
 
+  html {
+  overflow: hidden;
+  }
+
   html, body {
     font-size: 10px;
   }
 
   body {
-    overflow-y: overlay;
   }
 
   li {

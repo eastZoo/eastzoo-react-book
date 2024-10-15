@@ -1,5 +1,3 @@
-"use client";
-
 import {
   ACCESS_TOKEN,
   RECOIL_PERSIST_KEY,
@@ -7,52 +5,37 @@ import {
 } from "../sharedStrings";
 
 export const writeAccessToken = (accessToken: string) => {
-  if (typeof window !== "undefined") {
-    localStorage.setItem(ACCESS_TOKEN, accessToken);
-  }
+  localStorage.setItem(ACCESS_TOKEN, accessToken);
 };
 
 export const writeRefreshToken = (refreshToken: string) => {
-  if (typeof window !== "undefined") {
-    localStorage.setItem(REFRESH_TOKEN, refreshToken);
-  }
+  localStorage.setItem(REFRESH_TOKEN, refreshToken);
 };
 
 export const readAccessToken = () => {
-  if (typeof window !== "undefined") {
-    return localStorage.getItem(ACCESS_TOKEN);
-  }
-  return null;
+  return localStorage.getItem(ACCESS_TOKEN);
 };
 
 export const readRefreshToken = () => {
-  if (typeof window !== "undefined") {
-    return localStorage.getItem(REFRESH_TOKEN);
-  }
-  return null;
+  return localStorage.getItem(REFRESH_TOKEN);
 };
 
 export const getUserInfo = () => {
-  if (typeof window !== "undefined") {
-    const localStorageUser: string | null =
-      localStorage.getItem(RECOIL_PERSIST_KEY);
-    if (localStorageUser) {
-      const storageJson = JSON.parse(localStorageUser);
-      return storageJson["user"];
-    }
+  const localStorageUser: string | null =
+    localStorage.getItem(RECOIL_PERSIST_KEY);
+  if (localStorageUser) {
+    const storageJson = JSON.parse(localStorageUser);
+    return storageJson["user"];
   }
+
   return null;
 };
 
 export const logout = () => {
-  if (typeof window !== "undefined") {
-    localStorage.removeItem(ACCESS_TOKEN);
-    localStorage.removeItem(REFRESH_TOKEN);
-    localStorage.removeItem(RECOIL_PERSIST_KEY);
-    window.location.href = "/";
-  }
+  localStorage.removeItem(ACCESS_TOKEN);
+  localStorage.removeItem(REFRESH_TOKEN);
+  window.location.href = "/";
+  localStorage.removeItem(RECOIL_PERSIST_KEY);
 };
 
-export const validateToken = async () => {
-  // Token validation logic, possibly with API calls
-};
+export const validateToken = async () => {};

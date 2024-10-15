@@ -12,7 +12,10 @@ interface ButtonProps {
     | "icon"
     | "find"
     | "cancelModal"
-    | "outline";
+    | "outline"
+    | "selectCondition"
+    | "selectCondition active"
+    | "disabled";
 }
 
 interface TooltipProps {
@@ -89,6 +92,14 @@ export const Buttons = styled.button<ButtonProps>`
       &:hover {
         background: ${(props) => props.theme.colors.primaryHover};
       }
+    `}
+
+     ${(props) =>
+    props.$layout === "disabled" &&
+    css`
+      color: ${(props) => props.theme.colors.white100};
+      border: none;
+      background: ${(props) => props.theme.colors.black12};
     `}
 
   ${(props) =>
@@ -183,6 +194,7 @@ export const Buttons = styled.button<ButtonProps>`
       border: none;
       background: none;
 
+      // 보고서 버튼에 아이콘 사용 시 검정색상 변경으로 인한 주석 처리
       svg {
         path {
           fill: ${(props) => props.theme.colors.black60};
@@ -227,6 +239,23 @@ ${(props) =>
             fill-opacity: 1;
           }
         }
+      }
+    `}
+
+  ${(props) =>
+    props.$layout.includes("selectCondition") &&
+    css`
+      color: ${props.$layout.includes("active")
+        ? props.theme.colors.white100
+        : props.theme.colors.primary100};
+      border: 1px solid ${(props) => props.theme.colors.primary100};
+      background: ${props.$layout.includes("active")
+        ? props.theme.colors.primary100
+        : "none"};
+
+      &:hover {
+        background: ${(props) => props.theme.colors.primaryHover};
+        color: ${(props) => props.theme.colors.white100};
       }
     `}
 

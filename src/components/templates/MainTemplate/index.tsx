@@ -1,20 +1,19 @@
-"use client";
 import * as S from "./MainTemplate.style";
 import { useRecoilValue } from "recoil";
 import { useEffect, useState } from "react";
+import ContextMenu from "../../molecules/ContextMenu";
+import useContextMenu from "../../../common/hooks/useContextMenu";
 import { permissionsState } from "../../../common/states/permission";
 import { Header } from "../../organisms/Header";
-import useContextMenu from "@/common/hooks/useContextMenu";
-import ContextMenu from "@/components/molcules/ContextMenu";
-import { Sidemenu } from "@/components/organisms/Sidemenu";
+import { Sidemenu } from "../../organisms/Sidemenu";
 
 interface MainTemplateProps {
-  children: React.ReactNode;
+  children: React.ReactElement;
 }
 
 export const MainTemplate = ({ children }: MainTemplateProps) => {
   const [asideOpen, setAsideOpen] = useState(true);
-  const [innerWidth, setInnerWidth] = useState(window?.innerWidth);
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const permissions = useRecoilValue(permissionsState);
 
   const {
@@ -33,7 +32,7 @@ export const MainTemplate = ({ children }: MainTemplateProps) => {
 
     return () => {
       window.removeEventListener("resize", resizeListener);
-      innerWidth < 960 ? setAsideOpen(false) : setAsideOpen(true);
+      innerWidth < 1200 ? setAsideOpen(false) : setAsideOpen(true);
     };
   }, [innerWidth]);
 

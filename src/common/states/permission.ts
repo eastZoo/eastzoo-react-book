@@ -1,11 +1,15 @@
 import { atom, selectorFamily } from "recoil";
+import { Permission } from "../types/permission";
 
-export const permissionsState = atom<any[] | null>({
+export const permissionsState = atom<Permission[] | null>({
   key: `permission`,
   default: null,
 });
 
-export const permissionSelector = selectorFamily<any | undefined, string>({
+export const permissionSelector = selectorFamily<
+  Permission | undefined,
+  string
+>({
   key: "permissionSelector",
   get:
     (pmsMenuName) =>

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+import { SidemenuListBox } from "../../molecules/SidemenuList/SidemenuList.style";
 import {
   SidemenuTop,
   SidemenuTopSpan,
@@ -9,7 +9,6 @@ import {
   SidemenuListItem,
   TitBox,
 } from "../../atoms/SidemenuItem/SidemenuItem.style";
-import { SidemenuListBox } from "@/components/molcules/SidemenuList/SidemenuList.style";
 
 interface MainBoxProps {
   $asideOpen: boolean;
@@ -18,7 +17,7 @@ interface MainBoxProps {
 export const MainTemplate = styled.div<MainBoxProps>`
   display: grid;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   grid-template-areas:
     "MN HD"
     "MN CT";
@@ -71,8 +70,8 @@ export const MainTemplate = styled.div<MainBoxProps>`
 `;
 
 export const ContentSection = styled.section`
-  overflow: hidden;
+  overflow: auto;
   grid-area: CT;
-  height: calc(100vh - 52px);
+  height: calc(100svh - 52px);
   background: ${(props) => props.theme.colors.primary5};
 `;
