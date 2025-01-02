@@ -9,8 +9,8 @@ interface GlobalStyleProviderProps {
 export const GlobalStyleProvider = ({ children }: GlobalStyleProviderProps) => {
   return (
     <>
-      <GlobalStyle />
       <GlobalFonts />
+      <GlobalStyle />
       {children}
     </>
   );

@@ -1,5 +1,5 @@
-import normalize from "styled-normalize";
 import { createGlobalStyle } from "styled-components";
+import normalize from "styled-normalize";
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -8,19 +8,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Pretendard', Sans-serif;
-    letter-spacing: -0.01rem;
-  }
-
-  html {
-  overflow: hidden;
   }
 
   html, body {
     font-size: 10px;
-  }
-
-  body {
+    font-family: 'NanumSquareNeo', sans-serif;
   }
 
   li {
@@ -29,5 +21,9 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+  }
+
+  p {
+    margin: 0;
   }
 `;

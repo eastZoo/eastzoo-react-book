@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import ImgCheckbox from "../../../../styles/assets/img/icon_checkbox_checked.png";
 
 export const InputCheckbox = styled.div`
   label {
@@ -32,7 +31,6 @@ export const InputCheckbox = styled.div`
     &:checked {
       + label::before {
         border: none;
-        background: url(${ImgCheckbox});
         background-size: cover;
       }
     }

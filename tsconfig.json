@@ -9,6 +9,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes": false,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -16,5 +17,14 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "custom.d.ts", "fonts.d.ts"]
+  "include": [
+    "src",
+    "custom.d.ts",
+    "fonts.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "craco.config.ts"
+  ],
+  "extends": "./tsconfig.paths.json",
+  "exclude": ["node_modules"]
 }

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { LoginForm } from "../../components/organisms/LoginForm";
-import { AuthTemplate } from "../../components/templates/AuthTemplate";
+import { AuthTemplate } from "../../components/template/AuthTemplate";
 
 export interface LoginInputs {
   userId: string;
@@ -28,8 +28,9 @@ export const LoginPage = () => {
   });
 
   const onSubmit = async (data: LoginInputs) => {
+    // TODO: 로그인 로직 추가
     localStorage.setItem(
-      "naval-ship-condition-land-access-token",
+      `${process.env.PROJECT_NAME}-access-token`,
       "tempAccessToken"
     );
     window.location.replace("/");

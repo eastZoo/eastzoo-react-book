@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import ImgArrow from "../../../../styles/assets/img/img_icon_arrow_down.png";
 
 export const SelectBox = styled.div`
   display: flex;
   width: 100%;
   padding: 0 !important;
-  background-image: url(${ImgArrow});
   background-repeat: no-repeat;
   background-size: 16px 16px;
   background-position: 95% center;

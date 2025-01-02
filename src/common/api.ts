@@ -44,7 +44,7 @@ api.interceptors.response.use(
       }
       try {
         const response = await axios.post(
-          `${process.env.REACT_APP_API_HOST}/api/Users/refresh-token`,
+          `${process.env.REACT_APP_API_HOST}/user/refresh-token`,
           {
             jwtToken,
             refreshToken,
