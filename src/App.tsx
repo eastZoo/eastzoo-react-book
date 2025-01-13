@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  console.log("version 1.0.3");
+  console.log("version 1.0.1");
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>

@@ -18,15 +18,15 @@ export const LoginForm = ({ onSubmit, control }: LoginFormProps) => {
         <ControlText
           control={control}
           size="lg"
-          placeholder="아이디를 입력하세요"
-          name="mbrUserId"
+          placeholder="이메일을 입력하세요"
+          name="email"
         />
         <ControlText
           type="password"
           control={control}
           size="lg"
           placeholder="비밀번호를 입력하세요"
-          name="mbrUserPwd"
+          name="password"
         />
         <Buttons type="submit" layout="primary" size="lg" label="Login" />
       </S.LoginForm>

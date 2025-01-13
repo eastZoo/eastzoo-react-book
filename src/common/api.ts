@@ -3,9 +3,7 @@ import { ApiError } from "./types/apiError";
 import {
   logout,
   readAccessToken,
-  readRefreshToken,
   writeAccessToken,
-  writeRefreshToken,
 } from "./functions/authFunctions";
 import { showAlert } from "../components/containers/Alert";
 
@@ -14,6 +12,7 @@ const api = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true, // 쿠키를 포함
 });
 
 api.interceptors.request.use(
@@ -34,38 +33,41 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
+    // 리프레시 토큰 요청 자체가 실패한 경우는 바로 로그아웃 처리
+    if (
+      error.response?.status === 401 &&
+      originalRequest.url === "/auth/refresh"
+    ) {
+      showAlert("로그인이 만료되었습니다. 다시 로그인해주세요.");
+      return logout();
+    }
+
+    // 일반 요청이 401이고 아직 재시도하지 않은 경우에만 리프레시 시도
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      const jwtToken = readAccessToken();
-      const refreshToken = readRefreshToken();
-      if (!refreshToken) {
-        showAlert("로그인해주세요");
-        return logout();
-      }
+
       try {
         const response = await axios.post(
-          `${process.env.REACT_APP_API_HOST}/user/refresh-token`,
+          `${process.env.REACT_APP_API_HOST}/auth/refresh`,
+          {},
           {
-            jwtToken,
-            refreshToken,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${jwtToken}`,
-            },
+            withCredentials: true,
           }
         );
 
-        const accessTokenData = response?.data?.jwtToken;
-        const refreshTokenData = response?.data?.refreshToken;
-        writeAccessToken(accessTokenData);
-        writeRefreshToken(refreshTokenData);
+        const newAccessToken = response?.data?.accessToken;
+        writeAccessToken(newAccessToken);
 
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
         return api(originalRequest);
       } catch (e) {
-        showAlert("토큰이 만료되었습니다. 다시 로그인해주세요");
-        return logout();
+        showAlert("로그인이 만료되었습니다. 다시 로그인해주세요.");
+        // return logout();
       }
+    }
+
+    if (error.response?.status === 500) {
+      return showAlert("서버 요청 에러!!");
     }
 
     return Promise.reject(error);
@@ -89,13 +91,13 @@ const request = async <T>(
 
     if (!isGetRequest && (data as any)?.success === false) {
       throw new ApiError({
-        message: (data as any)?.message ?? "서버요청 에러!",
+        message: (data as any)?.message ?? "서버 요청 에러!",
       });
     }
 
     return data;
   } catch (error) {
-    let message = "서버요청 에러!";
+    let message = "서버 요청 에러!";
 
     if (error instanceof AxiosError) {
       const { response }: any = error;
@@ -105,7 +107,7 @@ const request = async <T>(
 
       if (isGetRequest) {
         if (error?.response?.status === 403) {
-          showAlert("조회 권한이 없습니다");
+          showAlert("조회 권한이 없습니다.");
         }
         return [] as any;
       }

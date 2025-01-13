@@ -8,16 +8,8 @@ export const writeAccessToken = (accessToken: string) => {
   localStorage.setItem(ACCESS_TOKEN, accessToken);
 };
 
-export const writeRefreshToken = (refreshToken: string) => {
-  localStorage.setItem(REFRESH_TOKEN, refreshToken);
-};
-
 export const readAccessToken = () => {
   return localStorage.getItem(ACCESS_TOKEN);
-};
-
-export const readRefreshToken = () => {
-  return localStorage.getItem(REFRESH_TOKEN);
 };
 
 export const getUserInfo = () => {
@@ -33,9 +25,7 @@ export const getUserInfo = () => {
 
 export const logout = () => {
   localStorage.removeItem(ACCESS_TOKEN);
-  localStorage.removeItem(REFRESH_TOKEN);
-  window.location.href = "/";
   localStorage.removeItem(RECOIL_PERSIST_KEY);
-};
 
-export const validateToken = async () => {};
+  window.location.href = "/";
+};

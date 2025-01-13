@@ -1,9 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
 import { ColDef } from "ag-grid-community";
 import dayjs from "dayjs";
 import { useState } from "react";
 import { ModalProps, Modals } from "..";
-import { request } from "../../../../common/api";
 import { Buttons } from "../../../atoms/Buttons";
 import { ExplainText } from "../../../atoms/ExplainText";
 import { Grid } from "../../Grid";
