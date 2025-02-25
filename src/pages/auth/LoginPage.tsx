@@ -40,10 +40,10 @@ export const LoginPage = () => {
         data: data,
       });
     },
-    onSuccess: (res: { accessToken: string }) => {
+    onSuccess: (res: { data: { accessToken: string } }) => {
       console.log(res);
-      if (res && res.accessToken) {
-        writeAccessToken(res.accessToken);
+      if (res && res.data.accessToken) {
+        writeAccessToken(res.data.accessToken);
         window.location.replace("/");
       }
     },
