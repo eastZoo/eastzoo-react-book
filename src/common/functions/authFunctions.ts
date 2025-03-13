@@ -1,8 +1,4 @@
-import {
-  ACCESS_TOKEN,
-  RECOIL_PERSIST_KEY,
-  REFRESH_TOKEN,
-} from "../sharedStrings";
+import { ACCESS_TOKEN, RECOIL_PERSIST_KEY } from "../sharedStrings";
 
 export const writeAccessToken = (accessToken: string) => {
   localStorage.setItem(ACCESS_TOKEN, accessToken);
