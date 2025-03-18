@@ -1,19 +1,57 @@
-import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useSetRecoilState } from "recoil";
+import { permissionsState } from "@/common/states/permission";
+import { userInfoState } from "@/recoil/adminInfo";
+import { request } from "@/common/api";
+import { Permission } from "@/common/types/permission";
+import { GET_GROUP_PERMISSIONS } from "@/common/querykeys";
+import { readAccessToken } from "@/common/functions/authFunctions";
 
-import { LoadingSpinner } from "@/components/atoms/LoadingSpinner";
-import { userInfoSelector } from "@/recoil/adminInfo";
+const AuthGuard = ({ children }: { children: React.ReactNode }) => {
+  const setUserInfo = useSetRecoilState(userInfoState);
+  const setMenuPermissions = useSetRecoilState(permissionsState);
 
-export const AuthGuard = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useRecoilState(userInfoSelector);
-  const [isLoading, setIsLoading] = useState(false);
+  // // 로그인된 사용자 정보 가져오기
+  // const { data: userInfo, isLoading: userLoading } = useQuery(
+  //   ["userInfo"],
+  //   getUserInfo,
+  //   {
+  //     staleTime: 1000 * 60 * 5, // 5분 동안 캐시 유지
+  //     refetchOnWindowFocus: false, // 브라우저 탭이 활성화될 때 자동 새로고침 방지
+  //   }
+  // );
 
-  // 인증 체크 로직
-  useEffect(() => {}, []);
+  // 사용자 메뉴 권한 가져오기
+  const { data: menuPermissions, isLoading: menuLoading } = useQuery({
+    queryKey: [GET_GROUP_PERMISSIONS],
+    queryFn: async () => {
+      const accessToken = readAccessToken();
+      if (!accessToken) {
+        setMenuPermissions(null);
+        return [];
+      }
+      const resPermissions = await request<Permission[]>({
+        method: "GET",
+        url: "/permission/group",
+      });
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+      setMenuPermissions(resPermissions);
+
+      return resPermissions;
+    },
+    staleTime: 1000 * 60 * 10, // 10분 동안 캐시 유지
+    refetchOnWindowFocus: false,
+  });
+
+  useEffect(() => {
+    // if (userInfo) setUserInfo(userInfo);
+    if (menuPermissions) setMenuPermissions(menuPermissions);
+  }, [menuPermissions, setUserInfo, setMenuPermissions]);
+
+  if (menuLoading) return <div>Loading...</div>;
 
   return <>{children}</>;
 };
+
+export default AuthGuard;

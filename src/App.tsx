@@ -8,7 +8,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import ErrorBoundary from "./error/errorBoundary";
 import { ToastContainer } from "react-toastify";
-import { AuthGuard } from "./core/AuthGuard";
+import AuthGuard from "./core/AuthGuard";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  console.log("version 1.0.1");
+  console.log("version 1.0.0");
   return (
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>

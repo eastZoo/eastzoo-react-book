@@ -1,6 +1,6 @@
 # Project Name
 
-INSYSTEM 리액트 템플릿
+auth-react-template 리액트 템플릿
 
 작성자 : eastZoo
 

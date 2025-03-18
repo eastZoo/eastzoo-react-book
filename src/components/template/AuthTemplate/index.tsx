@@ -8,7 +8,7 @@ export const AuthTemplate = ({ children }: AuthTemplateProps) => {
     <S.AuthTemplate>
       <S.AuthTitleSection>
         <S.AuthTitleBg />
-        <S.AuthTitleBox>INSYSTEM TEMPLATE</S.AuthTitleBox>
+        <S.AuthTitleBox>REACT TEMPLATE</S.AuthTitleBox>
       </S.AuthTitleSection>
 
       <S.AuthInputSection>

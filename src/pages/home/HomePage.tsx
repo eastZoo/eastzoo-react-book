@@ -3,8 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const navigate = useNavigate();
-
   const { data: testData } = useQuery({
     queryKey: ["USER_TEST"],
     queryFn: async () => {
@@ -17,12 +15,9 @@ const HomePage = () => {
     },
   });
 
-  console.log(testData);
-
   return (
     <div>
       <div>홈 페이지 입니다.</div>
-      <button onClick={() => navigate("/auth/login")}>로그인하기</button>
     </div>
   );
 };
