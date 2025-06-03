@@ -17,7 +17,6 @@ export const useLogout = () => {
     setLogId(null);
     request({ method: "POST", url: `/auth/logout/${logId}` }, false);
     localStorage.removeItem(ACCESS_TOKEN);
-    localStorage.removeItem(REFRESH_TOKEN);
     localStorage.removeItem(RECOIL_PERSIST_KEY);
     window.location.href = "/";
   };
